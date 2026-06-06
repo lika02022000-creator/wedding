@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Максим & Вероника — Свадьба</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Halimun';
+      src: url('fonts/Halimun.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      color: #1a1a1a;
+      background: #faf5ed;
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 35px 28px 50px;
+    }
+
+    .section-block {
+      margin-bottom: 45px;
+    }
+
+    .initials {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .initials-img {
+      display: block;
+      max-width: 85%;
+      height: auto;
+      margin: 0 auto;
+      image-rendering: auto;
+    }
+
+    /* PHOTO PLACEHOLDER */
+    .couple-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      line-height: 0;
+    }
+
+    .couple-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .couple-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: #aaa;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: #e8ddd0;
+    }
+
+    /* DIVIDER */
+    .divider {
+      display: none;
+    }
+
+    /* INVITATION */
+    .invitation-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: #4a4a4a;
+      text-align: center;
+      line-height: 2.1;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* CALENDAR */
+    .calendar-section {
+      text-align: center;
+    }
+
+    .calendar-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 34px;
+      font-weight: 400;
+      color: #1a1a1a;
+      margin-bottom: 25px;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+
+    .calendar-grid {
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .calendar-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+
+    .calendar-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 12px;
+      align-items: center;
+    }
+
+    .calendar-days span { padding: 6px 0; display: flex; align-items: center; justify-content: center; }
+
+    .calendar-days .active {
+      color: #1a1a1a;
+      font-weight: 500;
+    }
+
+    .heart-cell {
+      position: relative;
+    }
+
+    .heart-cell .heart-bg {
+      position: absolute;
+      width: 54px;
+      height: 54px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .heart-cell .heart-num {
+      position: relative;
+      z-index: 1;
+      color: white;
+      font-weight: 300;
+      padding-top: 5px;
+    }
+
+    .section-label {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .calendar-month {
+      transform: rotate(-4deg);
+      text-align: right;
+      padding-right: 3px;
+    }
+    .calendar-month img {
+      display: inline-block;
+      width: 100px;
+      height: auto;
+    }
+
+    /* SCHEDULE */
+    .schedule-section {
+    }
+
+    .section-frame {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    /* WISHES */
+    .wishes-section {
+    }
+
+    .wishes-frame {
+      position: relative;
+      width: 100%;
+      line-height: 0;
+    }
+
+    .wishes-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .wishes-overlay {
+      position: absolute;
+      left: 12%;
+      right: 12%;
+      top: 48%;
+      transform: translateY(-50%);
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .wishes-overlay p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: #4a4a4a;
+      line-height: 1.9;
+      margin: 0;
+    }
+
+    /* LOCATION */
+    .location-frame {
+      position: relative;
+      width: 100%;
+      line-height: 0;
+    }
+
+    .location-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .location-overlay {
+      position: absolute;
+      left: 10%;
+      right: 10%;
+      top: 62%;
+      transform: translateY(-50%);
+      text-align: center;
+      line-height: 1;
+    }
+
+    .location-overlay p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: #4a4a4a;
+      line-height: 2;
+      margin: 0;
+    }
+
+    .location-overlay .loc-sub {
+      color: #8a3540;
+    }
+
+    .location-map-link {
+      position: absolute;
+      left: calc(25% - 3px);
+      right: calc(25% + 3px);
+      top: calc(84.5% - 1px);
+      transform: translateY(-50%);
+      display: block;
+      z-index: 1;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    /* SURVEY */
+    .survey-section {
+      text-align: center;
+    }
+
+    .survey-title {
+      margin-bottom: 0;
+    }
+
+    .survey-sub {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #aaa;
+      margin-top: 8px;
+      margin-bottom: 24px;
+    }
+
+    .survey-form {
+      text-align: left;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .survey-block {
+      margin-bottom: 20px;
+    }
+
+    .survey-q {
+      font-size: 12px;
+      font-weight: 400;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .survey-opt {
+      display: block;
+      font-size: 13px;
+      color: #666;
+      padding: 6px 0;
+      cursor: pointer;
+    }
+
+    .survey-opt input {
+      margin-right: 8px;
+      accent-color: #440D0D;
+    }
+
+    .survey-textarea {
+      width: 100%;
+      border: 1px solid #ddd;
+      background: white;
+      padding: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      color: #1a1a1a;
+      resize: vertical;
+      outline: none;
+    }
+
+    .survey-textfield {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #ddd;
+      background: transparent;
+      padding: 8px 0;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      color: #1a1a1a;
+      outline: none;
+    }
+
+    .survey-textfield:focus {
+      border-bottom-color: #440D0D;
+    }
+
+    .survey-textarea:focus {
+      border-color: #440D0D;
+    }
+
+    .survey-btn-img {
+      display: block;
+      width: 100%;
+      border: none;
+      background: none;
+      cursor: pointer;
+      margin-top: 24px;
+      padding: 0;
+    }
+
+    .survey-btn-img img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* END SECTION */
+    .end-section {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .end-section img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 400px) {
+      .page { padding: 30px 20px 35px; }
+      .invitation-text { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<svg style="position:absolute;width:0;height:0;" aria-hidden="true">
+  <defs>
+    <filter id="handdrawn" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<div class="page">
+
+<div class="section-block">
+
+  <!-- INITIALS -->
+  <div class="initials">
+    <img src="photos/initials.png" alt="MB" class="initials-img">
+  </div>
+
+  <!-- COUPLE PHOTO -->
+  <div class="couple-photo">
+    <img src="photos/Group 1.png" alt="Максим и Вероника">
+  </div>
+
+</div>
+
+  <!-- CALENDAR -->
+  <div class="calendar-section section-block">
+    <h2 class="calendar-title">
+      <img src="photos/label-3.png" alt="Дата любви" class="section-label">
+    </h2>
+    <div class="calendar-grid">
+      <div class="calendar-weekdays">
+        <span>ПН</span><span>ВТ</span><span>СР</span><span>ЧТ</span><span>ПТ</span><span>СБ</span><span>ВС</span>
+      </div>
+      <div class="calendar-days">
+        <span>3</span><span>4</span><span>5</span>
+        <span class="active heart-cell">
+          <svg viewBox="0 0 50 50" class="heart-bg">
+            <path d="M25 44 C11 33 3 25 3 16 C3 8 10 3 17 3 C21 3 24 6 25 11 C26 6 29 3 33 3 C40 3 47 8 47 16 C47 25 39 33 25 44Z"
+                  fill="#440D0D" stroke="#440D0D" stroke-width="0.5"
+                  stroke-linecap="round" stroke-linejoin="round"
+                  filter="url(#handdrawn)"/>
+          </svg>
+          <span class="heart-num">6</span>
+        </span>
+        <span>7</span><span>8</span><span>9</span>
+      </div>
+      <p class="calendar-month"><img src="photos/avgust.png" alt="Август"></p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- INVITATION -->
+  <p class="invitation-text section-block">
+    Мы приглашаем вас разделить с нами<br>
+    радостный день, в который мы станем семьей!<br>
+    В этот волшебный день мы скажем друг другу «Да»<br>
+    и соединим наши сердца и судьбы<br>
+    в окружении самых близких и родных людей.
+  </p>
+
+  <div class="divider"></div>
+
+  <!-- LOCATION -->
+  <div class="location-section section-block">
+    <div class="location-frame">
+      <img src="photos/frame-location.png" alt="Место проведения">
+      <div class="location-overlay">
+        <p>Выездная церемония будет проходить<br>в глэмпинг-парке «Атмосфера».</p>
+        <p class="loc-sub">Тутаевский район, село Пшенищиче</p>
+      </div>
+      <a class="location-map-link" href="https://yandex.ru/maps/org/atmosfera/243390203135/?ll=39.670831%2C57.801646&z=12.17" target="_blank" rel="noopener">На карту</a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SCHEDULE -->
+  <div class="schedule-section section-block">
+    <img src="photos/frame-schedule.png" alt="Расписание дня" class="section-frame">
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- WISHES -->
+  <div class="wishes-section section-block">
+    <div class="wishes-frame">
+      <img src="photos/frame-wishes.png" alt="Пожелания">
+      <div class="wishes-overlay">
+        <p>Приятным комплиментом<br>
+        вместо букета для нас будет,<br>
+        если вы подарите виниловую пластинку,<br>
+        ведь цветами мы не сможем<br>
+        наслаждаться долго,<br>
+        а каждая пластинка будет напоминать<br>
+        о наших любимых, близких и родных людях</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SURVEY -->
+  <div class="survey-section section-block">
+    <h3 class="survey-title">
+      <img src="photos/anketa-label.png" alt="Анкета" class="section-label">
+    </h3>
+    <p class="survey-sub">Пожалуйста, заполните до 20 июля</p>
+
+    <form id="surveyForm" class="survey-form" onsubmit="return submitSurvey(event)">
+
+      <div class="survey-block">
+        <p class="survey-q">Напишите ваше имя и фамилию. Если вас двое, то заполните анкету дважды:</p>
+        <input type="text" name="fullname" class="survey-textfield" placeholder="Имя и Фамилия">
+      </div>
+
+      <div class="survey-block">
+        <p class="survey-q">Что вы предпочитаете из напитков?</p>
+        <label class="survey-opt"><input type="checkbox" name="drinks" value="вино"> вино</label>
+        <label class="survey-opt"><input type="checkbox" name="drinks" value="шампанское"> шампанское</label>
+        <label class="survey-opt"><input type="checkbox" name="drinks" value="крепкий алкоголь"> крепкий алкоголь</label>
+        <label class="survey-opt"><input type="checkbox" name="drinks" value="сок"> сок</label>
+      </div>
+
+      <div class="survey-block">
+        <p class="survey-q">Горячее блюдо:</p>
+        <label class="survey-opt"><input type="radio" name="dish" value="кларевый сом с овощами брю-бланш"> кларевый сом с овощами брю-бланш</label>
+        <label class="survey-opt"><input type="radio" name="dish" value="медальоны из индейки с печеным картофелем, зеленым луком и грибами в сливочном соусе"> медальоны из индейки с печеным картофелем, зеленым луком и грибами в сливочном соусе</label>
+      </div>
+
+      <div class="survey-block">
+        <p class="survey-q">Как планируете приехать на площадку?</p>
+        <label class="survey-opt"><input type="radio" name="transport" value="на своем авто"> на своем авто</label>
+        <label class="survey-opt"><input type="radio" name="transport" value="на трансфере"> на трансфере</label>
+      </div>
+
+      <div class="survey-block">
+        <p class="survey-q">Останетесь ли с ночевкой (3.000₽ с пары за номер):</p>
+        <label class="survey-opt"><input type="radio" name="stay" value="останусь"> останусь</label>
+        <label class="survey-opt"><input type="radio" name="stay" value="уеду домой"> уеду домой</label>
+      </div>
+
+      <div class="survey-block">
+        <p class="survey-q">Дополнительная информация:</p>
+        <textarea class="survey-textarea" name="extra" rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="survey-btn-img">
+        <img src="photos/Отправить.png" alt="Отправить">
+      </button>
+    </form>
+    <p id="surveyStatus" style="font-size:11px;color:#8a3540;margin-top:10px;display:none;"></p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- END -->
+  <div class="end-section section-block">
+    <img src="photos/s-lubovyu.png" alt="С любовью, Максим и Вероника">
+  </div>
+
+</div>
+
+<script>
+const SURVEY_URL = 'https://script.google.com/macros/s/AKfycbzJiWwtPnY04KEmDj2TXNYePtI-lNxX_aaZbnYLfsQzgb10xzH4vC_x-oN8K6XUNHXo/exec';
+
+function submitSurvey(event) {
+  event.preventDefault();
+  const form = document.getElementById('surveyForm');
+  const fullname = form.querySelector('input[name="fullname"]').value;
+  const drinks = Array.from(form.querySelectorAll('input[name="drinks"]:checked')).map(cb => cb.value);
+  const dish = form.querySelector('input[name="dish"]:checked')?.value || '';
+  const transport = form.querySelector('input[name="transport"]:checked')?.value || '';
+  const stay = form.querySelector('input[name="stay"]:checked')?.value || '';
+  const extra = form.querySelector('textarea[name="extra"]').value;
+  const data = { fullname, drinks, dish, transport, stay, extra };
+
+  const status = document.getElementById('surveyStatus');
+  status.textContent = 'Отправка...';
+  status.style.display = 'block';
+
+  fetch(SURVEY_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: JSON.stringify(data),
+    headers: { 'Content-Type': 'text/plain' }
+  }).then(() => {
+    status.textContent = 'Спасибо! Ваш ответ отправлен.';
+    form.reset();
+  }).catch(() => {
+    status.textContent = 'Ошибка при отправке. Попробуйте позже.';
+  });
+  return false;
+}
+</script>
+
+</body>
+</html>
