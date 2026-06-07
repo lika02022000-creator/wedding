@@ -408,9 +408,9 @@
     .music-hitarea {
       position: absolute;
       left: 50%;
-      top: 89.5%;
+      top: 93%;
       transform: translate(-50%, -50%);
-      width: 14%;
+      width: 20%;
       aspect-ratio: 1 / 1;
       border-radius: 50%;
       cursor: pointer;
@@ -616,7 +616,9 @@ audio.loop = true;
 
 function toggleMusic() {
   if (audio.paused) {
-    audio.play();
+    audio.play().catch(function(e) {
+      console.log('Audio play failed:', e);
+    });
   } else {
     audio.pause();
   }
