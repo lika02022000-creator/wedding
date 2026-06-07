@@ -10,6 +10,7 @@
   <meta property="og:url" content="https://lika02022000-creator.github.io/wedding/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
+  <script src="https://www.youtube.com/iframe_api"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
@@ -393,9 +394,28 @@
       height: auto;
     }
 
-    @media (max-width: 400px) {
-      .page { padding: 30px 20px 35px; }
-      .invitation-text { font-size: 14px; }
+    .hero-wrapper {
+      position: relative;
+      width: 100%;
+      line-height: 0;
+    }
+
+    .hero-wrapper img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .music-hitarea {
+      position: absolute;
+      left: 50%;
+      top: 89.5%;
+      transform: translate(-50%, -50%);
+      width: 14%;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 2;
     }
   </style>
 </head>
@@ -414,14 +434,9 @@
 
 <div class="section-block">
 
-  <!-- INITIALS -->
-  <div class="initials">
-    <img src="photos/initials.png" alt="MB" class="initials-img">
-  </div>
-
-  <!-- COUPLE PHOTO -->
-  <div class="couple-photo">
-    <img src="photos/Group 1.png" alt="Максим и Вероника">
+  <div class="hero-wrapper">
+    <img src="photos/Первая картинка.png" alt="Максим и Вероника">
+    <div class="music-hitarea" onclick="toggleMusic()"></div>
   </div>
 
 </div>
@@ -596,7 +611,30 @@ function submitSurvey(event) {
   });
   return false;
 }
+
+let musicPlayer;
+
+function onYouTubeIframeAPIReady() {
+  musicPlayer = new YT.Player('musicPlayer', {
+    height: '200',
+    width: '200',
+    videoId: 'u2ah9tWTkmk',
+    playerVars: { autoplay: 0, controls: 0, modestbranding: 1 }
+  });
+}
+
+function toggleMusic() {
+  if (!musicPlayer) return;
+  const state = musicPlayer.getPlayerState();
+  if (state === YT.PlayerState.PLAYING) {
+    musicPlayer.pauseVideo();
+  } else {
+    musicPlayer.playVideo();
+  }
+}
 </script>
+
+<div id="musicPlayer" style="position:absolute;left:-9999px;top:0;width:200px;height:200px;opacity:0.01;pointer-events:none;"></div>
 
 </body>
 </html>
