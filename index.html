@@ -611,30 +611,16 @@ function submitSurvey(event) {
   return false;
 }
 
-let musicPlayer;
-
-function onYouTubeIframeAPIReady() {
-  musicPlayer = new YT.Player('musicPlayer', {
-    height: '200',
-    width: '200',
-    videoId: 'u2ah9tWTkmk',
-    playerVars: { autoplay: 0, controls: 0, modestbranding: 1 }
-  });
-}
+const audio = new Audio('music/ordinary.mp3');
+audio.loop = true;
 
 function toggleMusic() {
-  if (!musicPlayer) return;
-  const state = musicPlayer.getPlayerState();
-  if (state === YT.PlayerState.PLAYING) {
-    musicPlayer.pauseVideo();
+  if (audio.paused) {
+    audio.play();
   } else {
-    musicPlayer.playVideo();
+    audio.pause();
   }
 }
 </script>
-
-<div id="musicPlayer" style="position:absolute;left:-9999px;top:0;width:200px;height:200px;opacity:0.01;pointer-events:none;"></div>
-
-<script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
